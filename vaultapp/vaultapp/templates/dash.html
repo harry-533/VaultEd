@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/dash.css' %}">
+        <link rel="stylesheet" href="{% static 'css/global.css' %}">
+        <script src="{% static 'js/dash.js' %}"></script>
+        <link rel="icon" href="{% static 'images/dash/icon.png' %}">
+        <title>Vault•Ed</title>
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="{% url 'home' %}"><img id="nav-logo" src="{% static 'images/dash/logo.png' %}"></a>
+            <div class="nav-icons">
+                <img id="modules-icon" src="{% static 'images/dash/module.png' %}">
+                <img id="message-icon" src="{% static 'images/dash/message.png' %}">
+                <img id="notif-icon" src="{% static 'images/dash/notif.png' %}">
+                <h2 id="profile-btn">{{ user.username }}</h2>
+            </div>
+        </div>
+        <div class="main-section">
+            <div class="left-section">
+                <div class="filters">
+                    <form id="filter-form">
+                        <h2 id="filter-title">Filter</h2>
+                        <div class="price-filter">
+                            <select id="price-dropdown-left">
+                                <option value="0" disabled selected>Min price</option>
+                                <option value="10">£10</option>
+                            </select>
+                            <select id="price-dropdown-right">
+                                <option value="10000" disabled selected>Max price</option>
+                                <option value="0">£0</option>
+                            </select>
+                        </div>  
+                        <select id="dropdown">
+                            <option value="None" disabled selected>Activity type</option>
+                            <option value="Cultural">Cultural</option>
+                        </select>
+                        <select id="dropdown">
+                            <option value="0" disabled selected>Accessibility</option>
+                            <option value="0">Limited Accessibility</option>
+                        </select>
+                        <select id="dropdown">
+                            <option value="0" disabled selected>Populartiy</option>
+                            <option value="1">⭐</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="weather-widgets">
+                    <div class="weather weather-capetown">
+                        <div id="idc9d8cf961eafa" a='{"t":"v","v":"1.2","lang":"en","locs":[1208],"ssot":"c","sics":"ds","cbkg":"#00000000","cfnt":"#000000","cprb":"#FFFFFF00","cprf":"#000000","slfs":22,"slbr":10,"eln":"bool","ephw":"bool","ent":"bool","slmw":200}'>Weather Data Source: <a href="https://sharpweather.com/weather_cape_town/30_days/">weather Cape Town 30 days</a></div><script async src="https://static1.sharpweather.com/widgetjs/?id=idc9d8cf961eafa"></script>
+                        <div id="id2c63c70d866dd" a='{"t":"g7","v":"1.2","lang":"en","locs":[1208],"ssot":"c","sics":"ds","cbkg":"#FFFFFF00","cfnt":"#000000","stof":"5","slfs":20,"slmw":220}'>Weather Data Source: <a href="https://sharpweather.com/weather_cape_town/30_days/">weather Cape Town 30 days</a></div><script async src="https://static1.sharpweather.com/widgetjs/?id=id2c63c70d866dd"></script>
+                    </div>  
+                </div>
+            </div> 
+            <div class="center-section">
+                <form id="sort-form">
+                    <select id="sort-by" onchange='sortSubmit(this.value);'>
+                        <option value="0" disabled selected>Sort by</option>
+                        <option value="low-high">Price: Low to high</option>
+                        <option value="high-low">Price: High to low</option>
+                        <option value="popular">Most Popular</option>
+                    </select>
+                </form>
+                <div class="activities">
+                    {% for activity in activities %}
+                        {% if activity.city|lower|cut:' ' == journey.city|lower|cut:' ' %}
+                        <div class="activity {{ activity.image }}">
+                            <div class="activity-img">
+                                <img class="img{{ activity.image }}" id="activity-img" src="{% static 'images/result/activityimg/' %}{{ activity.city|lower|cut:' ' }}/{{ activity.image }}.png">
+                            </div>
+                            <div class="activity-info">
+                                <div class="activity-header">
+                                    <h1 class="title{{ activity.image }}" id="activity-title">{{ activity.title }} - {{ activity.price }}</h1>
+                                    <h1 class="btn-{{ activity.image }}" id="add-btn">+</h1>
+                                </div>
+                                <p class="desc{{ activity.image }}">{{ activity.desc }}</p>
+                                <p class="short-desc{{ activity.image }} " id="short-desc">{{ activity.short_desc }}</p>
+                                <div class="activity-list">
+                                    <ul>
+                                        <li class="type{{ activity.image }}">Activity type: {{ activity.category }}</li>
+                                        <li>Group size: {{ activity.group_size }}</li>
+                                        <li class="age{{ activity.image }}">Recommended Age: {{ activity.age }}</li>
+                                    </ul>
+                                    <ul>
+                                        <li>Duration: {{ activity.duration }}</li>
+                                        <li class="popular{{ activity.image }}" id="popularity">Popularity:  {{ activity.popularity }}</li>
+                                        <li class="access{{ activity.image }}">Accessibility: {{ activity.accessibility }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="budget">
+                    <h2 id="current-budget">Budget - £{{ journey.budget }}</h2>
+                    <div class="chosen-activities">
+                    </div>
+                    <button id="btn-save">Save</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
