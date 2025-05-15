@@ -1,0 +1,56 @@
+{% load static %}
+{% load custom_tags %}
+{% get_modules as modules %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/dash.css' %}">
+        <link rel="stylesheet" href="{% static 'css/global.css' %}">
+        <script src="{% static 'js/dash.js' %}"></script>
+        <link rel="icon" href="{% static 'images/favicon.png' %}">
+        <title>Vault•Ed</title>
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="{% url 'dash' %}">
+                <img id="logo" src="{% static 'images/logo.png' %}">
+            </a>
+            <div class="nav-icons">
+                {% include "svgs/dropdown.svg.html" %}
+                {% include "svgs/message.svg.html" %}
+                {% include "svgs/notification.svg.html" %}
+                <h2 id="profile-btn">{{ user.username }}</h2>
+            </div>
+        </div>
+        <div class="main-section">
+            <div class="left-section">
+                <div class="stats">
+                    
+                </div>
+                <div class="deadlines">
+ 
+                </div>
+            </div> 
+            <div class="center-section">
+                <div class="activities">
+                    {% for module in modules %}
+                        {% if module.code in user.modules %}
+                        <div class="module">
+                            <img id="module-img" src="{% static 'images/dash/module/' %}{{ module.code }}.jpg">
+                            <h3>{{ module.name }} - {{ module.code }}</h3>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="todo">
+                    
+                </div>
+            </div>
+            {% include "svgs/ai.svg.html" %}
+        </div>
+    </body>
+</html>

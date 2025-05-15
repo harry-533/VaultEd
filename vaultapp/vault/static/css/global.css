@@ -1,0 +1,29 @@
+body {
+    min-height: 100vh;
+}
+
+#modules-icon, #message-icon, #notif-icon {
+    width: 50px;
+}
+
+#message-icon {
+    stroke: black;
+}
+
+#modules-icon:hover, #notif-icon:hover, #ai-chat:hover {
+    fill: red;
+    cursor: pointer;
+}
+
+#message-icon:hover {
+    stroke: red;
+    cursor: pointer;
+}
+
+#ai-chat {
+    width: 80px;
+}
+
+#profile-btn {
+    font-size: 30px;
+}
