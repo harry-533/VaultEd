@@ -1,29 +1,94 @@
 body {
     min-height: 100vh;
+    margin: 0;
+    font-family: 'Ancizar Sans', sans-serif;
+    background-color: rgb(240, 243, 247);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 50px;
+    width: 100%;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.home-btn {
+    line-height: 0;
+    margin: 20px 0px 20px 60px;
+}
+
+#logo, .home-btn {
+    width: 10vw;
+}
+
+.nav-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
 }
 
 #modules-icon, #message-icon, #notif-icon {
-    width: 50px;
-}
-
-#message-icon {
+    width: 40px;
+    stroke-width: 10px;
     stroke: black;
 }
 
-#modules-icon:hover, #notif-icon:hover, #ai-chat:hover {
+svg {
+    height: 100%;
+    width: 100%;
+}
+
+#modules-icon:hover, #ai-chat:hover {
     fill: red;
     cursor: pointer;
 }
 
-#message-icon:hover {
+#message-icon:hover, #notif-icon:hover, #modules-icon:hover {
     stroke: red;
     cursor: pointer;
 }
 
 #ai-chat {
+    position: absolute;
     width: 80px;
+    height: 80px;
+    bottom: 40px;
+    right: 60px;
 }
 
 #profile-btn {
     font-size: 30px;
+    margin: 0;
+}
+
+#profile-icon {
+    display: flex;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.profile-sec {
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+    gap: 10px;
+}
+
+.profile-sec:hover {
+    cursor: pointer;
+}
+
+#divide {
+    width: 40px;
 }

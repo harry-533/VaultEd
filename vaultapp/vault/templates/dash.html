@@ -9,19 +9,26 @@
         <link rel="stylesheet" href="{% static 'css/dash.css' %}">
         <link rel="stylesheet" href="{% static 'css/global.css' %}">
         <script src="{% static 'js/dash.js' %}"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="icon" href="{% static 'images/favicon.png' %}">
         <title>Vault•Ed</title>
     </head>
     <body>
         <div class="navbar">
-            <a href="{% url 'dash' %}">
+            <a class="home-btn" href="{% url 'dash' %}">
                 <img id="logo" src="{% static 'images/logo.png' %}">
             </a>
             <div class="nav-icons">
                 {% include "svgs/dropdown.svg.html" %}
                 {% include "svgs/message.svg.html" %}
                 {% include "svgs/notification.svg.html" %}
-                <h2 id="profile-btn">{{ user.username }}</h2>
+                {% include "svgs/divide.svg.html" %}
+                <div class="profile-sec">
+                    <h2 id="profile-icon">HS</h2>
+                    <h2 id="profile-btn">{{ user.username }}</h2>
+                </div>
             </div>
         </div>
         <div class="main-section">
