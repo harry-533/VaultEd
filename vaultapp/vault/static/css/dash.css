@@ -1,0 +1,39 @@
+.stats {
+    display: flex;
+    gap: 2vw;
+}
+
+.circle-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+  
+.progress-ring {
+    transform: rotate(-90deg);
+}
+  
+.ring-bg-att, .ring-bg-grade {
+    fill: none;
+    stroke: #e6e6e6;
+    stroke-width: 12;
+}
+  
+.ring-fill-att, .ring-fill-grade {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 339.292;
+    stroke-dashoffset: 339.292;
+    transition: stroke-dashoffset 1s ease-out;
+}
+  
+.percentage-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
