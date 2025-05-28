@@ -34,40 +34,72 @@
         <div class="main-section">
             <div class="left-section">
                 <div class="stats">
+                    <div class="attendance">
+                        <H2 id="stat-title">Attendance</H2>
+                        <div class="circle-container">
+                            <svg class="progress-ring" width="180" height="180">
+                                <circle class="ring-bg-att" cx="90" cy="90" r="81" />
+                                <circle class="ring-fill-att" cx="90" cy="90" r="81" />
+                            </svg>
+                            <div class="percentage-text" id="percentage-text-att">0%</div>
+                        </div>
+                    </div>
+                    <div class="grade">
+                        <div class="circle-container">
+                            <svg class="progress-ring" width="180" height="180">
+                                <circle class="ring-bg-grade" cx="90" cy="90" r="81" />
+                                <circle class="ring-fill-grade" cx="90" cy="90" r="81" />
+                            </svg>
+                            <div class="percentage-text" id="percentage-text-grade">0%</div>
+                        </div>
+                        <H2 id="stat-title">Grade</H2>
+                    </div>
+                </div>
+                <div class="deadlines">
+                    <h2 id="deadline-title">Deadlines</h2>
+                    <div class="deadline">
+                        <div class="deadline-left">
+                            <img id="deadline-img" src="{% static 'images/dash/module/' %}CIS2360-2425.jpg">
+                            <div class="deadline-detail">
+                                <h4 id="deadline-module">Relational Databases and Web Integration</h4>
+                                <p id="deadline-assignment">Relational Database Design</p>
+                            </div>
+                        </div>
+                        <div class="deadline-date">
+                            <p id="deadline-day">13</p>
+                            <h4 id="deadline-month">MAR</h4>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="center-section">
+                <div class="modules-container">
+                    <div class="modules">
+                    {% for module in modules %}
+                        <div class="module">
+                        <img id="module-img" src="{% static 'images/dash/module/' %}{{ module.code }}.jpg">
+                        <p id="module-title">{{ module.name }}: {{ module.code }}</p>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="stats">
                     <div class="circle-container">
-                        <svg class="progress-ring" width="120" height="120">
-                          <circle class="ring-bg-att" cx="60" cy="60" r="54" />
-                          <circle class="ring-fill-att" cx="60" cy="60" r="54" />
+                        <svg class="progress-ring" width="160" height="160">
+                            <circle class="ring-bg-att" cx="80" cy="80" r="72" />
+                            <circle class="ring-fill-att" cx="80" cy="80" r="72" />
                         </svg>
                         <div class="percentage-text" id="percentage-text-att">0%</div>
                     </div>
                     <div class="circle-container">
-                        <svg class="progress-ring" width="120" height="120">
-                          <circle class="ring-bg-grade" cx="60" cy="60" r="54" />
-                          <circle class="ring-fill-grade" cx="60" cy="60" r="54" />
+                        <svg class="progress-ring" width="160" height="160">
+                            <circle class="ring-bg-grade" cx="80" cy="80" r="72" />
+                            <circle class="ring-fill-grade" cx="80" cy="80" r="72" />
                         </svg>
                         <div class="percentage-text" id="percentage-text-grade">0%</div>
                     </div>
-                </div>
-                <div class="deadlines">
- 
-                </div>
-            </div> 
-            <div class="center-section">
-                <div class="activities">
-                    {% for module in modules %}
-                        {% if module.code in user.modules %}
-                        <div class="module">
-                            <img id="module-img" src="{% static 'images/dash/module/' %}{{ module.code }}.jpg">
-                            <h3>{{ module.name }} - {{ module.code }}</h3>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="right-section">
-                <div class="todo">
-                    
                 </div>
             </div>
             {% include "svgs/ai.svg.html" %}

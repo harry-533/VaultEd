@@ -1,12 +1,31 @@
+.main-section {
+    display: flex;
+    gap: 20px;
+    height: 87.5vh;
+}
+
+.left-section {
+    margin-left: 40px;
+}
+
 .stats {
     display: flex;
-    gap: 2vw;
+    background-color: white;
+    border-radius: 10px;
+    gap: 2.5vw;
+    padding: 1.7vh;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.attendance, .grade {
+    text-align: center;
 }
 
 .circle-container {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
+    /* margin: 20px 20px 20px 20px; */
 }
   
 .progress-ring {
@@ -18,13 +37,18 @@
     stroke: #e6e6e6;
     stroke-width: 12;
 }
+
+#stat-title {
+    font-size: 25px;
+    margin: 10px 0px 10px 0px;
+}
   
 .ring-fill-att, .ring-fill-grade {
     fill: none;
     stroke-width: 12;
     stroke-linecap: round;
-    stroke-dasharray: 339.292;
-    stroke-dashoffset: 339.292;
+    stroke-dasharray: 507.375;
+    stroke-dashoffset: 507.375;
     transition: stroke-dashoffset 1s ease-out;
 }
   
@@ -33,7 +57,143 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     color: #333;
+}
+
+.deadlines {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    height: 54vh;
+}
+
+.deadline {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.deadline-left {
+    display: flex;
+}
+
+#deadline-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    display: block;
+    margin-left: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#deadline-module, #deadline-title, #deadline-day, #deadline-month, #deadline-assignment {
+    margin: 0;
+}
+
+#deadline-title {
+    padding: 15px;
+}
+
+#deadline-module {
+    font-size: 18px;
+    margin: 5px 10px
+}
+
+#deadline-assignment {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.deadline-date {
+    text-align: center;
+    margin-right: 15px;
+}
+
+#deadline-day {
+    font-size: 18px;
+}
+
+#deadline-month {
+    font-size: 22px;
+}
+
+
+
+
+
+
+.modules {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    height: 83.5vh;
+    margin-bottom: 10px;
+    padding-right: 10px;
+}
+
+.modules::-webkit-scrollbar {
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.modules::-webkit-scrollbar-thumb {
+    background-color: #ba2f2f;
+    border-radius: 10px;
+    border: #f2e6e6 3px solid;
+    width: 50%;
+}
+
+.module {
+    background-color: white;
+    width: 15vw;
+    height: 13.5vw;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+#module-img {
+    width: 15vw;
+    border-radius: 10px 10px 0px 0px;
+}
+
+#module-title {
+    font-size: 1.2vw;
+    padding: 15px;
+    margin: 0;
+}
+
+@media (max-width: 1600px) {
+    .modules {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14.5px;
+    }
+    .module {
+        width: 240px;
+        height: 216px;
+    }
+    #module-img {
+        width: 240px;
+    }
+    #module-title {
+        font-size: 19.2px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .modules {
+        grid-template-columns: 1fr;
+    }
+}
+
+.right-section {
+    margin-right: 40px;
 }

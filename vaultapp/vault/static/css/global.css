@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: 'Ancizar Sans', sans-serif;
     background-color: rgb(240, 243, 247);
+    overflow-y: hidden;
 }
 
 .navbar {
@@ -11,8 +12,9 @@ body {
     flex-direction: row;
     gap: 50px;
     width: 100%;
+    margin-bottom: 40px;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,12 +46,12 @@ svg {
 }
 
 #modules-icon:hover, #ai-chat:hover {
-    fill: red;
+    fill: #ba2f2f;
     cursor: pointer;
 }
 
 #message-icon:hover, #notif-icon:hover, #modules-icon:hover {
-    stroke: red;
+    stroke: #ba2f2f;
     cursor: pointer;
 }
 
@@ -69,7 +71,7 @@ svg {
 #profile-icon {
     display: flex;
     border-radius: 5px;
-    background-color: red;
+    background-color: #ba2f2f;
     color: white;
     width: 40px;
     height: 40px;
@@ -91,4 +93,10 @@ svg {
 
 #divide {
     width: 40px;
+}
+
+@media (max-width: 1600px) {
+    #logo, .home-btn {
+        width: 160px;
+    }
 }
